@@ -1,9 +1,16 @@
 class ItemAPIController < ApplicationController
 
-  get '/' do
-    "you hit the ItemAPIController"
-  end
   # index
+  get '/' do
+    user = User.find_by username: session[:username]
+    {
+      status: 200,
+      # you could write some pagination attributes here
+      # why might you wanna do that?
+      # how might you do that?
+      items: user.items
+    }.to_json
+  end
 
   # create
 
