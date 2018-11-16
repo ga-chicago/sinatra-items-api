@@ -5,6 +5,8 @@ require './controllers/ApplicationController'
 require './controllers/UserAPIController'
 
 # models
+require './models/UserModel'
+require './models/ItemModel'
 
 # routes
 map('/') {

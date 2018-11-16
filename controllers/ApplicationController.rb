@@ -17,5 +17,9 @@ class ApplicationController < Sinatra::Base
     }.to_json
   end
   
+  get '/test' do
+    binding.pry
+    "testing done"
+  end
 
 end
