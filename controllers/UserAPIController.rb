@@ -59,5 +59,14 @@ class UserAPIController < ApplicationController
   end # post '/register' do
 
   # logout GET '/api/user/logout'
+  get '/logout' do
+    username = session[:username]
+    session.destroy
+    {
+      status: 200,
+      message: "Logged out user #{username}. Bye."
+    }.to_json
+  end
+
 
 end
