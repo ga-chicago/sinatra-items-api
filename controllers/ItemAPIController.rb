@@ -37,8 +37,34 @@ class ItemAPIController < ApplicationController
 
 
   # update
+  put '/:id' do
+    payload_body = request.body.read
+    payload = JSON.parse(payload_body).symbolize_keys
+
+    item = Item.find params[:id]
+    item.content = payload[:content]
+    item.save
+    {
+      status: 200,
+      message: "Updated item!",
+      item: item
+    }.to_json    
+  
+  end
+
 
   # destroy
+  delete '/:id' do
+    item_id = params[:id]
+    item = Item.find item_id
+    item.destroy
+    {
+      status: 200,
+      message: "Destroyed item #{item_id}"
+    }.to_json
+  end
+
+
 
   # show -- we'll skip this since our model is so basic
 
