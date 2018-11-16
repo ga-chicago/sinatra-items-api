@@ -1,10 +1,33 @@
 class UserAPIController < ApplicationController
 
   # login POST '/api/user/login'
+  post '/login' do
+    # receive JSON requests like this
+    payload_body = request.body.read
+    payload = JSON.parse(payload_body).symbolize_keys
 
+    user = User.find_by username: payload[:username]
+    pw = payload[:password]
+
+    if user and user.authenticate pw
+      session[:logged_in] = true
+      session[:username] = user.username
+      {
+        status: 200,
+        message: "Successfully logged in as #{user.username}"
+      }.to_json
+    else
+      {
+        status: 403, # check and see if there's a better status code 
+        message: "Invalid username or password."
+      }.to_json
+    end
+
+  end # post '/login' do
 
   # register POST '/api/user/register'
   post '/register' do
+
     # receive JSON requests like this
     payload_body = request.body.read
     payload = JSON.parse(payload_body).symbolize_keys
@@ -31,7 +54,6 @@ class UserAPIController < ApplicationController
         status: 200,
         message: "Successfully registered user #{user.username}",
       }.to_json
-
     end
 
   end # post '/register' do
