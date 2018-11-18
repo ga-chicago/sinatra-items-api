@@ -48,8 +48,8 @@ class ItemAPIController < ApplicationController
       status: 200,
       message: "Updated item!",
       item: item
-    }.to_json    
-  
+    }.to_json
+
   end
 
 
