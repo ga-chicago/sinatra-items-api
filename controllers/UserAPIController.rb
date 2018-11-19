@@ -14,7 +14,8 @@ class UserAPIController < ApplicationController
       session[:username] = user.username
       {
         status: 200,
-        message: "Successfully logged in as #{user.username}"
+        message: "Successfully logged in as #{user.username}",
+        logged_in_as: user.username
       }.to_json
     else
       {
@@ -53,6 +54,7 @@ class UserAPIController < ApplicationController
       {
         status: 200,
         message: "Successfully registered user #{user.username}",
+        logged_in_as: user.username
       }.to_json
     end
 
