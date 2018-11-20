@@ -32,12 +32,12 @@ class ApplicationController < Sinatra::Base
     enable :cross_origin
   end
 
-  before do
-    headers['Access-Control-Allow-Origin'] = 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
-    headers['Access-Control-Allow-Credentials'] = 'true'
-  end
+  # before do
+  #   headers['Access-Control-Allow-Origin'] = 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
+  #   headers['Access-Control-Allow-Credentials'] = 'true'
+  # end
 
-  set :allow_origin, 'http://localhost:3000'
+  set :allow_origin, 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
   set :allow_credentials, true
   set :allow_methods, [:get, :post, :put, :patch, :delete, :options]
 
@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
   # request sent before the actual request
   options '*' do 
     response.headers['Allow'] = 'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
     response.headers['Access-Control-Allow-Credentials'] = 'true'
     response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Authorization, Content-Type, Cache-Control, Accept"
     200 #this is the status code & also sends a response
