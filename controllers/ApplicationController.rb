@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
   end
 
   before do
-    headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    headers['Access-Control-Allow-Origin'] = 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
     headers['Access-Control-Allow-Credentials'] = 'true'
   end
 
