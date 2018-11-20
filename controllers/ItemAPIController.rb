@@ -11,7 +11,7 @@ class ItemAPIController < ApplicationController
       # you could write some pagination attributes here
       # why might you wanna do that?
       # how might you do that?
-      items: user.items
+      items: user.items#.order(:id)
     }.to_json
   end
 

@@ -31,7 +31,9 @@ class UserAPIController < ApplicationController
 
     # receive JSON requests like this
     payload_body = request.body.read
-    payload = JSON.parse(payload_body).symbolize_keys
+    payload = JSON.parse(payload_body).symbolize_keys 
+    # this would be like accessing req.body
+    # if you were using bodyParser.json() in express
 
     # user should not be able to choose a username that is taken
     user_exists = User.find_by username: payload[:username]

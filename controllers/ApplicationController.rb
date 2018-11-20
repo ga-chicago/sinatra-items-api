@@ -3,6 +3,8 @@ class ApplicationController < Sinatra::Base
   require 'bundler'
   Bundler.require()
 
+  require './config/environments'
+
   # where you currently have:
   # enable :sessions
 
@@ -22,10 +24,6 @@ class ApplicationController < Sinatra::Base
   # https://stackoverflow.com/a/9747608/5924190
   # https://stackoverflow.com/a/5677589/5924190
 
-  ActiveRecord::Base.establish_connection(
-    :adapter => 'postgresql',
-    :database => 'salty_items'
-  )
 
   # enable cors
   register Sinatra::CrossOrigin
