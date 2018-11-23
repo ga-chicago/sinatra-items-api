@@ -24,7 +24,6 @@ class ApplicationController < Sinatra::Base
   # https://stackoverflow.com/a/9747608/5924190
   # https://stackoverflow.com/a/5677589/5924190
 
-
   # enable cors
   register Sinatra::CrossOrigin
 
@@ -44,6 +43,10 @@ class ApplicationController < Sinatra::Base
   # tell the browser what's ok and what's not
   # this is the route that will respond to the OPTIONS 
   # request sent before the actual request
+
+  # figure out where we are
+  pp ENV['RACK_ENV']
+
   options '*' do 
     response.headers['Allow'] = 'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS'
     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000, https://stormy-citadel-17314.herokuapp.com/'
