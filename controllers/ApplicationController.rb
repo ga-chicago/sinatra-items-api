@@ -6,15 +6,15 @@ class ApplicationController < Sinatra::Base
   require './config/environments'
 
   # where you currently have:
-  # enable :sessions
+  enable :sessions
 
   # adding this should solve it
-  # set :session_secret, "I'm the secret here not you"
+  set :session_secret, "I'm the secret here not you"
 
   # you could also try this:
-  use Rack::Session::Cookie, :key => 'rack.session',
-                             :path => '/',
-                             :secret => 'your_secret'
+  # use Rack::Session::Cookie, :key => 'rack.session',
+  #                            :path => '/',
+  #                            :secret => 'your_secret'
 
   # see http://sinatrarb.com/faq.html#sessions
   

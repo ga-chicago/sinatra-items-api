@@ -12,6 +12,12 @@ class UserAPIController < ApplicationController
     if user and user.authenticate pw
       session[:logged_in] = true
       session[:username] = user.username
+
+      puts ""
+      puts "here's the session after logging in"
+      pp session
+      puts ""
+
       {
         status: 200,
         message: "Successfully logged in as #{user.username}",
